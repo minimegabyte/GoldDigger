@@ -3,7 +3,7 @@
 var board = document.getElementById('board');
 var ctx = board.getContext('2d');
 var gold = new Image();
-gold.src = './img/gold.png';
+gold.src = '../img/gold.png';
 
 function CurrentPicturePosition(x, y) {
   this.x = x;
