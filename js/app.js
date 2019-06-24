@@ -27,8 +27,8 @@ var timer = setTimeout(function countdown() {
   var y = coordinates.y;
   console.log(x + ' ' + y);
   ctx.drawImage(gold,x, y);
-  timer = setTimeout(countdown, 3000);
-}, 3000);
+  timer = setTimeout(countdown, 30000);
+}, 30000);
 
 /*
 Generate random x and y coordinates
@@ -42,6 +42,16 @@ function generateXY () {
   return [x, y];
 }
 
+/*TO DO
+-compare the x and y with currentPicturePosition within the range
+-
+
+
+*/
+
+
+
+
 /*
 Instantiate object for XY coordinates
 */
@@ -51,5 +61,16 @@ var canvasEl = document.getElementById('board');
 canvasEl.addEventListener('click', handleClickOnImage);
 
 function handleClickOnImage(event) {
-  
+  var clickedX = event.clientX;
+  var clickedY = event.clientY;
+  var x = coordinates.x + 200;  //To target the right area of the picture
+  var y = coordinates.y + 200;  // To target the right area of the picture
+
+  if (clickedX <= x && clickedY <= y) {
+    console.log('Cliked on the right spot');
+  } else {
+    console.log('Sth wrong');
+  }
+
 }
+
