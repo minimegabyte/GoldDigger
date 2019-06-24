@@ -47,3 +47,9 @@ Instantiate object for XY coordinates
 */
 var test = generateXY();
 var coordinates = new CurrentPicturePosition(test[0], test[1]);
+var canvasEl = document.getElementById('board');
+canvasEl.addEventListener('click', handleClickOnImage);
+
+function handleClickOnImage(event) {
+  
+}
