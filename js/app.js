@@ -76,16 +76,12 @@ function handleClickOnImage(event) {
   console.log('clicked y is ' + clickedY);
   if (clickedX >= x && clickedX <= x + 100 &&
       clickedY >= y && clickedY <= y + 100) {
-    // clickStatus = true;
     console.log('Cliked on the right spot');
     window.clearTimeout(timer);
     ctx.clearRect(0, 0, 900, 500);
-    createNewCoordinate;
-    window.clearTimeout(timer);
     createNewCoordinate();
     x = coordinates.x;
     y = coordinates.y;
-    console.log(x + ' ' + y);
     ctx.drawImage(gold, x, y, 100, 100);
     timer = setTimeout(function countdown() {
       ctx.clearRect(0, 0, 900, 500);
