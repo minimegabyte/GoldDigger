@@ -92,6 +92,9 @@ function handleClickOnImage(event) {
       ctx.drawImage(gold, x, y, 100, 100);
       timer = setTimeout(countdown, 3000);
     }, 3000);
+  } else {
+    alert('You lose');
+    location.replace('../html/HighScoreBoard.html');
   }
 }
 
