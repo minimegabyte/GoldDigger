@@ -14,19 +14,20 @@ function CurrentPicturePosition(x, y) {
 gold.onload = function() {
   var x = coordinates.x;
   var y = coordinates.y;
-  ctx.drawImage(gold,x, y);
+  ctx.drawImage(gold,x, y, 100, 100);
   console.log(x + ' ' + y);
 };
 
 /*
-
+Clears the canvas and re draws the gold at a
+random spot at every x interval
 */
 var timer = setTimeout(function countdown() {
-  ctx.clearRect(0, 0, 900,500);
+  ctx.clearRect(0, 0, 900, 500);
   var x = coordinates.x;
   var y = coordinates.y;
   console.log(x + ' ' + y);
-  ctx.drawImage(gold,x, y);
+  ctx.drawImage(gold, x, y, 100, 100);
   timer = setTimeout(countdown, 30000);
 }, 30000);
 
@@ -61,16 +62,21 @@ var canvasEl = document.getElementById('board');
 canvasEl.addEventListener('click', handleClickOnImage);
 
 function handleClickOnImage(event) {
-  var clickedX = event.clientX;
-  var clickedY = event.clientY;
-  var x = coordinates.x + 200;  //To target the right area of the picture
-  var y = coordinates.y + 200;  // To target the right area of the picture
+  var rect = canvasEl.getBoundingClientRect();
+  var scaleX = 900 / rect.width;
+  var scaleY = 500 / rect.height;
+  var clickedX = (event.clientX - rect.left) * scaleX;
+  var clickedY = (event.clientY - rect.top) * scaleY;
+  var x = coordinates.x; //To target the right area of the picture
+  var y = coordinates.y; // To target the right area of the picture
 
-  if (clickedX <= x && clickedY <= y) {
+  console.log('clicked x is ' + clickedX);
+  console.log('clicked y is ' + clickedY);
+  if (clickedX >= x && clickedX <= x + 100 &&
+      clickedY >= y && clickedY <= y + 100) {
     console.log('Cliked on the right spot');
   } else {
     console.log('Sth wrong');
   }
-
 }
 
