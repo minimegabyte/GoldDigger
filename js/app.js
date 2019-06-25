@@ -104,15 +104,13 @@ function handleClickOnImage(event) {
 
 function addPlayerScore() {
   //check local storage
+  //if local storage exists, add to temp arry
   var playersArr = JSON.parse(localStorage.getItem('players'));
-  // console.log('before ' + playersArr[playersArr.length-1].score);
+
   playersArr[playersArr.length-1].score = score;
-  // localStorage.setItem('setProducts', JSON.stringify(Product.allProducts));
+
   localStorage.setItem('players', JSON.stringify(playersArr));
 
-  // score = 10;
-  // console.log('after ' + playersArr[playersArr.length-1].score);
-  //if it's between null and 5, add the user's score
   var scoreArray = JSON.parse(localStorage.getItem('score'));
   // if(!scoreArray || scoreArray.length < 5) {
   //   //add score

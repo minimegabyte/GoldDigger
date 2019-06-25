@@ -12,6 +12,7 @@ function createUser(name) {
   return new Player(name);
 }
 
+
 function createLocalStorage() {
   localStorage.setItem('players', JSON.stringify(Player.allPlayers));
 }
