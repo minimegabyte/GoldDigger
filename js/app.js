@@ -62,6 +62,7 @@ var canvasEl = document.getElementById('board');
 canvasEl.addEventListener('click', handleClickOnImage);
 
 function handleClickOnImage(event) {
+  
   var rect = canvasEl.getBoundingClientRect();
   var scaleX = 900 / rect.width;
   var scaleY = 500 / rect.height;
@@ -76,7 +77,10 @@ function handleClickOnImage(event) {
       clickedY >= y && clickedY <= y + 100) {
     console.log('Cliked on the right spot');
   } else {
-    console.log('Sth wrong');
+    console.log('Sth wron');
   }
 }
+
+console.log('working');=
+
 
