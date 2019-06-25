@@ -5,6 +5,7 @@ var scaleX;
 var scaleY;
 var clickedX;
 var clickedY;
+var score = 0;
 var coordinates;
 var board = document.getElementById('board');
 var ctx = board.getContext('2d');
@@ -77,6 +78,8 @@ function handleClickOnImage(event) {
   if (clickedX >= x && clickedX <= x + 100 &&
       clickedY >= y && clickedY <= y + 100) {
     console.log('Cliked on the right spot');
+    score++;
+    console.log('score: ' + score);
     window.clearTimeout(timer);
     ctx.clearRect(0, 0, 900, 500);
     createNewCoordinate();
@@ -94,7 +97,29 @@ function handleClickOnImage(event) {
     }, 3000);
   } else {
     alert('You lose');
+    addPlayerScore();
     location.replace('../html/HighScoreBoard.html');
   }
+}
+
+function addPlayerScore() {
+  //check local storage
+  var playersArr = JSON.parse(localStorage.getItem('players'));
+  // console.log('before ' + playersArr[playersArr.length-1].score);
+  playersArr[playersArr.length-1].score = score;
+  // localStorage.setItem('setProducts', JSON.stringify(Product.allProducts));
+  localStorage.setItem('players', JSON.stringify(playersArr));
+
+  // score = 10;
+  // console.log('after ' + playersArr[playersArr.length-1].score);
+  //if it's between null and 5, add the user's score
+  var scoreArray = JSON.parse(localStorage.getItem('score'));
+  // if(!scoreArray || scoreArray.length < 5) {
+  //   //add score
+  // } else {
+    
+  // }
+  //if it's greater than 5, add logic to check if the user is in the top 5
+
 }
 
