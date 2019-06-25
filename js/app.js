@@ -1,5 +1,12 @@
 'use strict';
 
+var rect;
+var scaleX;
+var scaleY;
+var clickedX;
+var clickedY;
+var clickStatus = false;
+var coordinates;
 var board = document.getElementById('board');
 var ctx = board.getContext('2d');
 var gold = new Image();
@@ -23,13 +30,20 @@ Clears the canvas and re draws the gold at a
 random spot at every x interval
 */
 var timer = setTimeout(function countdown() {
+  // if (coordinates!== null && !clickStatus) {
+  //   createNewCoordinate();
+  //   clickStatus = false;
+  //   clearTimeout(timer);
+  // }
+
   ctx.clearRect(0, 0, 900, 500);
+  createNewCoordinate();
   var x = coordinates.x;
   var y = coordinates.y;
   console.log(x + ' ' + y);
   ctx.drawImage(gold, x, y, 100, 100);
-  timer = setTimeout(countdown, 30000);
-}, 30000);
+  timer = setTimeout(countdown, 3000);
+}, 3000);
 
 /*
 Generate random x and y coordinates
@@ -56,17 +70,22 @@ function generateXY () {
 /*
 Instantiate object for XY coordinates
 */
-var test = generateXY();
-var coordinates = new CurrentPicturePosition(test[0], test[1]);
+function createNewCoordinate() {
+  var randCoordArr = generateXY();
+  coordinates = new CurrentPicturePosition(randCoordArr[0], randCoordArr[1]);
+}
+
+createNewCoordinate();
 var canvasEl = document.getElementById('board');
 canvasEl.addEventListener('click', handleClickOnImage);
 
+
 function handleClickOnImage(event) {
-  var rect = canvasEl.getBoundingClientRect();
-  var scaleX = 900 / rect.width;
-  var scaleY = 500 / rect.height;
-  var clickedX = (event.clientX - rect.left) * scaleX;
-  var clickedY = (event.clientY - rect.top) * scaleY;
+  rect = canvasEl.getBoundingClientRect();
+  scaleX = 900 / rect.width;
+  scaleY = 500 / rect.height;
+  clickedX = (event.clientX - rect.left) * scaleX;
+  clickedY = (event.clientY - rect.top) * scaleY;
   var x = coordinates.x; //To target the right area of the picture
   var y = coordinates.y; // To target the right area of the picture
 
@@ -74,9 +93,16 @@ function handleClickOnImage(event) {
   console.log('clicked y is ' + clickedY);
   if (clickedX >= x && clickedX <= x + 100 &&
       clickedY >= y && clickedY <= y + 100) {
+    // clickStatus = true;
     console.log('Cliked on the right spot');
-  } else {
-    console.log('Sth wrong');
+    window.clearTimeout(timer);
+    ctx.clearRect(0, 0, 900, 500);
+    createNewCoordinate;
+    timer = setTimeout(function countdown(), 0);
   }
+  // window.clearTimeout(timer);
+  // } else {
+  //   console.log('Sth wrong');
+  // } clickStatus = false;
 }
 
