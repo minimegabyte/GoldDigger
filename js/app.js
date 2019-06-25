@@ -5,7 +5,6 @@ var scaleX;
 var scaleY;
 var clickedX;
 var clickedY;
-var clickStatus = false;
 var coordinates;
 var board = document.getElementById('board');
 var ctx = board.getContext('2d');
@@ -30,12 +29,6 @@ Clears the canvas and re draws the gold at a
 random spot at every x interval
 */
 var timer = setTimeout(function countdown() {
-  // if (coordinates!== null && !clickStatus) {
-  //   createNewCoordinate();
-  //   clickStatus = false;
-  //   clearTimeout(timer);
-  // }
-
   ctx.clearRect(0, 0, 900, 500);
   createNewCoordinate();
   var x = coordinates.x;
@@ -56,16 +49,6 @@ function generateXY () {
 
   return [x, y];
 }
-
-/*TO DO
--compare the x and y with currentPicturePosition within the range
--
-
-
-*/
-
-
-
 
 /*
 Instantiate object for XY coordinates
@@ -98,11 +81,21 @@ function handleClickOnImage(event) {
     window.clearTimeout(timer);
     ctx.clearRect(0, 0, 900, 500);
     createNewCoordinate;
-    timer = setTimeout(function countdown(), 0);
+    window.clearTimeout(timer);
+    createNewCoordinate();
+    x = coordinates.x;
+    y = coordinates.y;
+    console.log(x + ' ' + y);
+    ctx.drawImage(gold, x, y, 100, 100);
+    timer = setTimeout(function countdown() {
+      ctx.clearRect(0, 0, 900, 500);
+      createNewCoordinate();
+      var x = coordinates.x;
+      var y = coordinates.y;
+      console.log(x + ' ' + y);
+      ctx.drawImage(gold, x, y, 100, 100);
+      timer = setTimeout(countdown, 3000);
+    }, 3000);
   }
-  // window.clearTimeout(timer);
-  // } else {
-  //   console.log('Sth wrong');
-  // } clickStatus = false;
 }
 
