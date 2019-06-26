@@ -1,6 +1,7 @@
 'use strict';
 
-var scoreList = document.getElementById('hightScore');
+
+var scoreList = document.getElementById('highScore');
 var arrayOfTop5 = JSON.parse(localStorage.getItem('Top5'));
 
 for(var i = 0; i < arrayOfTop5.length; i++){
