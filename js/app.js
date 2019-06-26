@@ -8,6 +8,11 @@ var clickedY;
 var score = 0;
 var coordinates;
 var board = document.getElementById('board');
+var scoreTrackerEl = document.getElementById('scoreTracker');
+var playerNameEl = document.getElementById('player');
+var currentUserArray = JSON.parse(localStorage.getItem('CurrentPlayer'));
+playerNameEl.textContent = currentUserArray.name;
+scoreTrackerEl.appendChild(playerNameEl);
 var ctx = board.getContext('2d');
 var gold = new Image();
 gold.src = '../img/gold.png';
@@ -78,7 +83,8 @@ function handleClickOnImage(event) {
   if (clickedX >= x && clickedX <= x + 100 &&
       clickedY >= y && clickedY <= y + 100) {
     console.log('Cliked on the right spot');
-    score++;
+    // score++;
+    updateScoreTracker();
     console.log('score: ' + score);
     window.clearTimeout(timer);
     ctx.clearRect(0, 0, 900, 500);
@@ -99,7 +105,7 @@ function handleClickOnImage(event) {
     alert('You lose');
     updateCurrentPlayerScore();
     updateTop5();
-    location.replace('../html/HighScoreBoard.html');
+    window.location.replace('./HighScoreBoard.html');
   }
 }
 
@@ -137,6 +143,13 @@ function updateTop5() {
     }
   }
   localStorage.setItem('Top5', JSON.stringify(arrayOfTop5));
+}
+
+function updateScoreTracker() {
+  score++;
+  var pEl = document.getElementById('score');
+  pEl.textContent = score;
+  scoreTrackerEl.appendChild(pEl);
 }
 
 

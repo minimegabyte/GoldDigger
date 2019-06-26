@@ -5,29 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Game Board</title>
+    
 </head>
 
 <body>
     <header>
-
         <section>
-
             <nav>
                 <ul>
                     <li><a href="../index.html">HOME</a></li>
-                    <li><a href="HighScoreBoard.html">Score Board</a></li>
+                    <li><a href="./HighScoreBoard.html">Score Board</a></li>
                     <li><a href="GameBoard.html">Game Board</a></li>
-                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="./AboutUs.html">About Us</a></li>
                 </ul>
             </nav>
 
         </section>
-
-
     </header>
     <main>
+        <section id="canvasSection">
         <canvas id="board" width="900" height="500"></canvas>
+        </section>
+        <section id="scoreTracker">
+            <p id="player"></p>
+            <p>Current Score: </p>
+            <p id="score"></p>
+        </section>
+
     </main>
     <footer></footer>
 
