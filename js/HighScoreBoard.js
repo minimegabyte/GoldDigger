@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use strict';
 
 function User (name){
@@ -35,3 +36,8 @@ var submitEl = document.getElementById('userInfo');
 submitEl.addEventListener('submit',handleSubmit );
 
 
+=======
+// 'use strict';
+
+// Display top5 here...
+>>>>>>> 30452995f2e850e15520f827928a7bd08396811d
