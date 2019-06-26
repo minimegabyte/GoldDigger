@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+  background-color: #472D30;
+  color: #FFE1A8;
+  text-align: center;
+}
+
+main {
+  margin: auto 0;
+}
+
+header {
+  position: relative;
+  height: 60px;
+  margin: 50px 0;
+  font-family: 'Rubik', sans-serif;
+}
+
+main section {
+  padding: 75px;
+  border-radius: 15px;
+  border: 5px dashed #FFE1A8;
+}
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3.5em;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  float: left;
+  margin: 10px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.25em;
+}
+
+a:hover, button:hover {
+  color: #472D30;
+  background:#FFE1A8;
+  border-radius:5px;
+  padding: 10px;
+}
+
+/* HIGH SCORE LIST */
+main section li {
+  float: none;
+  margin: 20px;
+  font-size: 20px;
+  font-family: 'B612 Mono', monospace;
+}
+
+button {
+  font-family: 'B612 Mono', monospace;
+  color: #FFE1A8;
+  padding: 10px;
+  font-size: 1.5em;
+  margin-top: 30px;
+}
+
+button:hover {
+  transition: 200ms;
+}
