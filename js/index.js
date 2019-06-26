@@ -12,8 +12,14 @@ function createUser(name) {
   return new Player(name);
 }
 
-
 function createLocalStorage() {
+  //check
+  if(localStorage.players) {
+    var tempArr = JSON.parse(localStorage.getItem('players'));
+    for (var i = 0; i < tempArr.length; i++) {
+      Player.allPlayers.push(tempArr[i]);
+    }
+  }
   localStorage.setItem('players', JSON.stringify(Player.allPlayers));
 }
 
