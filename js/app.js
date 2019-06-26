@@ -97,27 +97,46 @@ function handleClickOnImage(event) {
     }, 3000);
   } else {
     alert('You lose');
-    addPlayerScore();
+    updateCurrentPlayerScore();
+    updateTop5();
     location.replace('../html/HighScoreBoard.html');
   }
 }
 
-function addPlayerScore() {
-  //check local storage
-  //if local storage exists, add to temp arry
-  var playersArr = JSON.parse(localStorage.getItem('players'));
-
-  playersArr[playersArr.length-1].score = score;
-
-  localStorage.setItem('players', JSON.stringify(playersArr));
-
-  var scoreArray = JSON.parse(localStorage.getItem('score'));
-  // if(!scoreArray || scoreArray.length < 5) {
-  //   //add score
-  // } else {
-    
-  // }
-  //if it's greater than 5, add logic to check if the user is in the top 5
-
+function updateCurrentPlayerScore() {  
+  var currentUserArray = JSON.parse(localStorage.getItem('CurrentPlayer'));
+  var finalObj = {
+    name:currentUserArray.name,
+    score:score
+  };
+  localStorage.setItem('CurrentPlayer', JSON.stringify(finalObj));
 }
+
+
+function updateTop5() {
+  var arrayOfTop5 = JSON.parse(localStorage.getItem('Top5'));
+  var currentUserArray = JSON.parse(localStorage.getItem('CurrentPlayer'));
+  var tempName = currentUserArray.name;
+  var tempScore = currentUserArray.score;
+
+  for (var i = 0; i < arrayOfTop5.length; i++) {
+    //Modify the arrayOfTop5 if the current user has the higher score
+    //Must beat the existing top score to get in top Five
+    if (currentUserArray.score >= arrayOfTop5[i].score) {
+      //Store temporary score and name from the top5
+      tempName = arrayOfTop5[i].name;
+      tempScore = arrayOfTop5[i].score;
+
+      //Update Top5 current index
+      arrayOfTop5[i].name = currentUserArray.name;
+      arrayOfTop5[i].score = currentUserArray.score;
+
+      //new score to get compared with the rest
+      currentUserArray.name = tempName;
+      currentUserArray.score = tempScore;
+    }
+  }
+  localStorage.setItem('Top5', JSON.stringify(arrayOfTop5));
+}
+
 

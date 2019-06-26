@@ -1,26 +1,31 @@
 'use strict';
 
-Player.allPlayers = [];
-
 function Player(name) {
   this.name = name;
   this.score = 0;
-  Player.allPlayers.push(this);
 }
 
 function createUser(name) {
   return new Player(name);
 }
 
-function createLocalStorage() {
-  //check
-  if(localStorage.players) {
-    var tempArr = JSON.parse(localStorage.getItem('players'));
-    for (var i = 0; i < tempArr.length; i++) {
-      Player.allPlayers.push(tempArr[i]);
+function addCurrentPlayerToLocalStorage(newPlayer) {
+  localStorage.setItem('CurrentPlayer', JSON.stringify(newPlayer));
+}
+
+
+//Creates default local storage for empty local storage 
+function createDefaultLocalStorage() {
+  if(!localStorage.getItem('Top5')) {
+    var allPlayers = [];
+    //Create 5 dummy players
+    for (var i = 0; i < 5; i++) {
+      allPlayers.push(new Player('dummyPlayer'));
     }
+    localStorage.setItem('Top5', JSON.stringify(allPlayers));
   }
-  localStorage.setItem('players', JSON.stringify(Player.allPlayers));
+  //Create Dummy Current player
+  localStorage.setItem('CurrentPlayer', JSON.stringify('CurrentPlayer'));
 }
 
 var handleSubmit = function (event) {
@@ -29,9 +34,11 @@ var handleSubmit = function (event) {
   var nameEl = event.target.playerName.value;
   console.log(nameEl);
   var newPlayer = createUser(nameEl);
-  createLocalStorage();
+  createDefaultLocalStorage();
+  addCurrentPlayerToLocalStorage(newPlayer);
   location.replace('../html/GameBoard.html');
 };
 
 var submitEl = document.getElementById('userInfo');
 submitEl.addEventListener('submit', handleSubmit);
+
