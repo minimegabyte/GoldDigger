@@ -36,7 +36,7 @@ var handleSubmit = function (event) {
   var newPlayer = createUser(nameEl);
   createDefaultLocalStorage();
   addCurrentPlayerToLocalStorage(newPlayer);
-  location.replace('../html/GameBoard.html');
+  window.location.replace('../html/GameBoard.html');
 };
 
 var submitEl = document.getElementById('userInfo');
