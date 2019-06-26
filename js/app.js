@@ -99,7 +99,7 @@ function handleClickOnImage(event) {
     alert('You lose');
     updateCurrentPlayerScore();
     updateTop5();
-    location.replace('../html/HighScoreBoard.html');
+    window.location.replace('./HighScoreBoard.html');
   }
 }
 
