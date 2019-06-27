@@ -13,13 +13,18 @@ main {
 header {
   position: relative;
   height: 30px;
-  margin: 50px 0;
+  margin: 30px 0;
   font-family: 'Rubik', sans-serif;
 }
 
 h1 {
   font-family: 'Press Start 2P', cursive;
   font-size: 3.5em;
+}
+
+h3 {
+  font-family: 'Press Start 2P', cursive;
+  display: inline;
 }
 
 ul {
@@ -33,29 +38,35 @@ li {
 
 main li {
   float: none;
-}
+} 
 
 a {
   text-decoration: none;
   font-size: 1.25em;
+  color:#FFE1A8;
+  background: #472D30;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-a:hover, button:hover {
-  color: #FFE1A8;
-  background:#472D30;;
+a:hover {
+  color: #472D30;
+  border: 1px solid #472D30;
+  background: #FFE1A8;
   border-radius:5px;
   padding: 10px;
 }
 
-button {
-  font-family: 'B612 Mono', monospace;
-  color: #FFE1A8;
-  padding: 10px;
-  font-size: 1.5em;
-  margin-top: 30px;
+main > ul > a:hover {
+  transition: 200ms;
 }
 
-button:hover {
+main a {
+  font-size: 2.25em;
+  font-family: 'Rubik', sans-serif;
+}
+
+main a:hover {
   transition: 200ms;
 }
 

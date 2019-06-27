@@ -11,7 +11,7 @@ var board = document.getElementById('board');
 var scoreTrackerEl = document.getElementById('scoreTracker');
 var playerNameEl = document.getElementById('player');
 var currentUserArray = JSON.parse(localStorage.getItem('CurrentPlayer'));
-playerNameEl.textContent = currentUserArray.name;
+playerNameEl.textContent = 'Howdy, ' + currentUserArray.name + '! ';
 scoreTrackerEl.appendChild(playerNameEl);
 var ctx = board.getContext('2d');
 var gold = new Image();
@@ -102,7 +102,7 @@ function handleClickOnImage(event) {
       timer = setTimeout(countdown, 3000);
     }, 3000);
   } else {
-    alert('You lose');
+    alert('Sorry You lose!');
     updateCurrentPlayerScore();
     updateTop5();
     window.location.replace('./HighScoreBoard.html');
@@ -148,7 +148,7 @@ function updateTop5() {
 function updateScoreTracker() {
   score++;
   var pEl = document.getElementById('score');
-  pEl.textContent = score;
+  pEl.textContent = 'Score:' + score + ' ';
   scoreTrackerEl.appendChild(pEl);
 }
 
