@@ -10,6 +10,7 @@ var coordinates;
 var board = document.getElementById('board');
 var scoreTrackerEl = document.getElementById('scoreTracker');
 var playerNameEl = document.getElementById('player');
+var diggingSound = document.getElementById('audio');
 var currentUserArray = JSON.parse(localStorage.getItem('CurrentPlayer'));
 playerNameEl.textContent = 'Howdy, ' + currentUserArray.name + '! ';
 scoreTrackerEl.appendChild(playerNameEl);
@@ -79,6 +80,7 @@ function handleClickOnImage(event) {
 
   if (clickedX >= x && clickedX <= x + 100 &&
       clickedY >= y && clickedY <= y + 100) {
+    diggingSound.play();
     updateScoreTracker();
     console.log('score: ' + score);
     window.clearTimeout(timer);
