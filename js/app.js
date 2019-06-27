@@ -150,12 +150,12 @@ window.addEventListener('load', function(event) {
   var spotlight = document.getElementById('night');
   var spotlightwidth = 128;
   var spotlightheight = 128;
-  var sizedisplay = 128;
 
   //register an event to move the spotlight
   document.onmousemove = function(event) {
-    spotlight.style.backgroundImage = '-webkit-radial-gradient(' + event.pageX + 'px ' + event.pageY + 'px, ' + spotlightwidth + 'px ' + spotlightheight + 'px, transparent 5%, black)';
-    sizedisplay.value = spotlightwidth + 'x' + spotlightheight;
+    var offsetX = event.pageX - 280;
+    var offsetY = event.pageY - 120;
+    spotlight.style.backgroundImage = '-webkit-radial-gradient(' + offsetX + 'px ' + offsetY + 'px, ' + spotlightwidth + 'px ' + spotlightheight + 'px, transparent 5%, black)';
   };
   //fire the event for the first time
   document.onmousemove({ pageX: 100, pageY: 100 });
