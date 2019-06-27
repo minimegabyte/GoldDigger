@@ -40,13 +40,28 @@ li {
 a {
   text-decoration: none;
   font-size: 1.25em;
+  color:#472D30;
+  background: #FFE1A8;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: 'B612 Mono', monospace;
 }
 
-a:hover, button:hover {
-  color: #472D30;
-  background:#FFE1A8;
+a:hover {
+  color: #FFE1A8;
+  border: 1px solid #FFE1A8;
+  background: #472D30;
   border-radius:5px;
   padding: 10px;
+}
+
+main a {
+  font-size: 2.25em;
+  
+}
+
+main a:hover {
+  transition: 200ms;
 }
 
 /* HIGH SCORE LIST */
@@ -59,18 +74,5 @@ main section li {
 
 main section ul {
   padding: 0;
-}
-
-button {
-  font-family: 'B612 Mono', monospace;
-  color: #FFE1A8;
-  padding: 10px;
-  font-size: 1.5em;
-  margin-top: 30px;
-  border: 5px solid #FFE1A8;
-  border-radius: 5px;
-}
-
-button:hover {
-  transition: 200ms;
+  margin-bottom: 5%;
 }
