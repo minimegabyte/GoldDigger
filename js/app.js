@@ -102,7 +102,7 @@ function handleClickOnImage(event) {
       timer = setTimeout(countdown, 3000);
     }, 3000);
   } else {
-    alert('You lose');
+    alert('Sorry You lose!');
     updateCurrentPlayerScore();
     updateTop5();
     window.location.replace('./HighScoreBoard.html');
