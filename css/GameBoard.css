@@ -13,13 +13,18 @@ main {
 header {
   position: relative;
   height: 30px;
-  margin: 50px 0;
+  margin: 30px 0;
   font-family: 'Rubik', sans-serif;
 }
 
 h1 {
   font-family: 'Press Start 2P', cursive;
   font-size: 3.5em;
+}
+
+h3 {
+  font-family: 'Press Start 2P', cursive;
+  display: inline;
 }
 
 ul {
@@ -33,26 +38,32 @@ li {
 
 main li {
   float: none;
-}
+} 
 
 a {
   text-decoration: none;
   font-size: 1.25em;
 }
 
-a:hover, button:hover {
+a:hover {
   color: #FFE1A8;
   background:#472D30;;
   border-radius:5px;
   padding: 10px;
 }
 
+button:hover {
+  color: #FFE1A8;
+  background:#472D30;
+}
+
 button {
   font-family: 'B612 Mono', monospace;
   color: #FFE1A8;
-  padding: 10px;
+  padding: 5px 10px;
   font-size: 1.5em;
-  margin-top: 30px;
+  border-radius: 5px;
+  border: 5px solid #472D30;
 }
 
 button:hover {

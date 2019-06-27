@@ -11,7 +11,7 @@ var board = document.getElementById('board');
 var scoreTrackerEl = document.getElementById('scoreTracker');
 var playerNameEl = document.getElementById('player');
 var currentUserArray = JSON.parse(localStorage.getItem('CurrentPlayer'));
-playerNameEl.textContent = currentUserArray.name;
+playerNameEl.textContent = 'Howdy, ' + currentUserArray.name + '! ';
 scoreTrackerEl.appendChild(playerNameEl);
 var ctx = board.getContext('2d');
 var gold = new Image();
@@ -148,7 +148,7 @@ function updateTop5() {
 function updateScoreTracker() {
   score++;
   var pEl = document.getElementById('score');
-  pEl.textContent = score;
+  pEl.textContent = 'Score:' + score + ' ';
   scoreTrackerEl.appendChild(pEl);
 }
 

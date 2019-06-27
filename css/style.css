@@ -6,14 +6,13 @@
 }
 
 main {
-  margin: auto 0;
+  width: 960px;
+  margin: auto;
 }
 
-
-/* MAIN */
 header {
   position: relative;
-  height: 60px;
+  height: 50px;
   margin: 50px 0;
   font-family: 'Rubik', sans-serif;
 }
@@ -29,7 +28,19 @@ ul {
 
 li {
   float: left;
-  margin: 10px;
+  margin: 20px;
+}
+
+p {
+  font-family: 'B612 Mono', monospace;
+  font-size: 1.5em;
+  line-height: 180%;
+  margin-bottom: 2%;
+}
+
+h2 {
+  font-family: 'Press Start 2P', cursive;
+  margin: 4%;
 }
 
 a {
@@ -45,7 +56,7 @@ a:hover, button:hover {
 }
 
 fieldset {
-  padding: 150px;
+  padding: 10px 40px;
   border-radius: 15px;
   border: 5px dashed #FFE1A8;
 }
@@ -62,7 +73,8 @@ input {
   margin-left: 80px;
   display: block;
   margin: 0 auto;
-
+  background-color: #FFE1A8;
+  color:#472D30;
 }
 
 button {
@@ -70,7 +82,7 @@ button {
   color: #FFE1A8;
   padding: 10px;
   font-size: 1.5em;
-  margin-top: 30px;
+  margin: 30px;
 }
 
 button:hover {
