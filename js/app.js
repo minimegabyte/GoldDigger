@@ -10,12 +10,14 @@ var coordinates;
 var board = document.getElementById('board');
 var scoreTrackerEl = document.getElementById('scoreTracker');
 var playerNameEl = document.getElementById('player');
+var diggingSound = document.getElementById('audio');
+var losingSound = document.getElementById('audio2');
 var currentUserArray = JSON.parse(localStorage.getItem('CurrentPlayer'));
 playerNameEl.textContent = 'Howdy, ' + currentUserArray.name + '! ';
 scoreTrackerEl.appendChild(playerNameEl);
 var ctx = board.getContext('2d');
 var gold = new Image();
-gold.src = '../img/gold.png';
+gold.src = '../img/nugget.png';
 
 function CurrentPicturePosition(x, y) {
   this.x = x;
@@ -26,7 +28,7 @@ function CurrentPicturePosition(x, y) {
 gold.onload = function() {
   var x = coordinates.x;
   var y = coordinates.y;
-  ctx.drawImage(gold,x, y, 100, 100);
+  ctx.drawImage(gold,x, y, 50, 50);
   console.log(x + ' ' + y);
 };
 
@@ -40,9 +42,9 @@ var timer = setTimeout(function countdown() {
   var x = coordinates.x;
   var y = coordinates.y;
   console.log(x + ' ' + y);
-  ctx.drawImage(gold, x, y, 100, 100);
-  timer = setTimeout(countdown, 3000);
-}, 3000);
+  ctx.drawImage(gold, x, y, 50, 50);
+  timer = setTimeout(countdown, 2000);
+}, 2000);
 
 /*
 Generate random x and y coordinates
@@ -79,6 +81,7 @@ function handleClickOnImage(event) {
 
   if (clickedX >= x && clickedX <= x + 100 &&
       clickedY >= y && clickedY <= y + 100) {
+    diggingSound.play();
     updateScoreTracker();
     console.log('score: ' + score);
     window.clearTimeout(timer);
@@ -86,17 +89,18 @@ function handleClickOnImage(event) {
     createNewCoordinate();
     x = coordinates.x;
     y = coordinates.y;
-    ctx.drawImage(gold, x, y, 100, 100);
+    ctx.drawImage(gold, x, y, 50, 50);
     timer = setTimeout(function countdown() {
       ctx.clearRect(0, 0, 900, 500);
       createNewCoordinate();
       var x = coordinates.x;
       var y = coordinates.y;
       console.log(x + ' ' + y);
-      ctx.drawImage(gold, x, y, 100, 100);
-      timer = setTimeout(countdown, 3000);
-    }, 3000);
+      ctx.drawImage(gold, x, y, 50, 50);
+      timer = setTimeout(countdown, 2000);
+    }, 2000);
   } else {
+    losingSound.play();
     alert('Sorry You lose!');
     updateCurrentPlayerScore();
     updateTop5();
