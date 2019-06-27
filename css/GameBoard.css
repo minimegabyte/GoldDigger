@@ -7,7 +7,6 @@
 
 main {
   margin: auto 0;
-  display: inline-block;
 }
 
 header {
@@ -70,7 +69,27 @@ button:hover {
   transition: 200ms;
 }
 
-canvas {
-  background-color: black;
-  border-radius: 10px;
+.container{
+  position:relative;
+  width: 900px;
+  height: 500px;
+}
+
+.container canvas{
+  position: absolute;
+  top:0;
+  left:0;
+  border-radius: 20px;
+}
+
+#board {
+  border: 5px dashed black;
+}
+
+#night {
+  z-index: 1;
+  opacity: 1;
+  /* position: fixed; */
+  pointer-events: none;
+  background-color: transparent;
 }

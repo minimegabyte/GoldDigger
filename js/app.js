@@ -68,7 +68,6 @@ createNewCoordinate();
 var canvasEl = document.getElementById('board');
 canvasEl.addEventListener('click', handleClickOnImage);
 
-
 function handleClickOnImage(event) {
   rect = canvasEl.getBoundingClientRect();
   scaleX = 900 / rect.width;
@@ -78,12 +77,8 @@ function handleClickOnImage(event) {
   var x = coordinates.x; //To target the right area of the picture
   var y = coordinates.y; // To target the right area of the picture
 
-  console.log('clicked x is ' + clickedX);
-  console.log('clicked y is ' + clickedY);
   if (clickedX >= x && clickedX <= x + 100 &&
       clickedY >= y && clickedY <= y + 100) {
-    console.log('Cliked on the right spot');
-    // score++;
     updateScoreTracker();
     console.log('score: ' + score);
     window.clearTimeout(timer);
@@ -109,7 +104,7 @@ function handleClickOnImage(event) {
   }
 }
 
-function updateCurrentPlayerScore() {  
+function updateCurrentPlayerScore() {
   var currentUserArray = JSON.parse(localStorage.getItem('CurrentPlayer'));
   var finalObj = {
     name:currentUserArray.name,
@@ -117,7 +112,6 @@ function updateCurrentPlayerScore() {
   };
   localStorage.setItem('CurrentPlayer', JSON.stringify(finalObj));
 }
-
 
 function updateTop5() {
   var arrayOfTop5 = JSON.parse(localStorage.getItem('Top5'));
@@ -152,4 +146,17 @@ function updateScoreTracker() {
   scoreTrackerEl.appendChild(pEl);
 }
 
+window.addEventListener('load', function(event) {
+  var spotlight = document.getElementById('night');
+  var spotlightwidth = 128;
+  var spotlightheight = 128;
+  var sizedisplay = 128;
 
+  //register an event to move the spotlight
+  document.onmousemove = function(event) {
+    spotlight.style.backgroundImage = '-webkit-radial-gradient(' + event.pageX + 'px ' + event.pageY + 'px, ' + spotlightwidth + 'px ' + spotlightheight + 'px, transparent 5%, black)';
+    sizedisplay.value = spotlightwidth + 'x' + spotlightheight;
+  };
+  //fire the event for the first time
+  document.onmousemove({ pageX: 100, pageY: 100 });
+});
