@@ -5,29 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Game Board</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/GameBoard.css">
+    <link href="https://fonts.googleapis.com/css?family=B612+Mono|Press+Start+2P|Rubik&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
-
         <section>
-
             <nav>
                 <ul>
                     <li><a href="../index.html">HOME</a></li>
                     <li><a href="./HighScoreBoard.html">Score Board</a></li>
-                    <li><a href="GameBoard.html">Game Board</a></li>
                     <li><a href="./AboutUs.html">About Us</a></li>
                 </ul>
             </nav>
 
         </section>
-
-
     </header>
     <main>
-        <canvas id="board" width="900" height="500"></canvas>
+        <ul>
+            <li><section id="scoreTracker">
+                <h3 id="player"></h3>
+                <h3 id="score"></h3>
+            </section></li>
+            <li><canvas id="board" width="900" height="500"></canvas></li>
+            <li><a href="../index.html">Exit</a></li>
+        </ul>
+        </section>
     </main>
     <footer></footer>
 

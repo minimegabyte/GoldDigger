@@ -1,3 +1,11 @@
-// 'use strict';
+'use strict';
 
-// Display top5 here...
+
+var scoreList = document.getElementById('highScore');
+var arrayOfTop5 = JSON.parse(localStorage.getItem('Top5'));
+
+for(var i = 0; i < arrayOfTop5.length; i++){
+  var listEl = document.createElement('li');
+  listEl.textContent = arrayOfTop5[i].name + ' : ' + arrayOfTop5[i].score;
+  scoreList.appendChild(listEl);
+}

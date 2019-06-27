@@ -6,34 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gold Digger</title>
-<link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=B612+Mono|Press+Start+2P|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <header>
-    
+    <header>   
         <section>
-    
             <nav>
                 <ul>
-                    <li><a href = "index.html">HOME</a></li>
                     <li><a href = "./html/HighScoreBoard.html">Score Board</a></li>
-                    <li><a href = "./html/GameBoard.html">Game Board</a></li>
                     <li><a href = "./html/AboutUs.html">About Us</a></li>
                 </ul>
             </nav>
-    
-        </section>
-
-        
+        </section>      
     </header>
-    <main>
 
+    <main>
+        <h1>Gold Digger</h1>
         <form id="userInfo">
             <fieldset>
-                <legend>New Game</legend>
-                <label for="playerName">Name</label>
-                <input type="text" name ="playerName">
+                <p>Start digging for gold by clicking on the nugget as they appear. If you can't click the nugget, you lose!</p>
+                <h2>READY?</h2>
+                <legend>How to play:</legend>
+                <input type="text" id="playerName" required placeholder="NAME">
                 <button type="submit">Start</button>
             </fieldset>
         </form>
@@ -42,6 +39,5 @@
     <footer></footer>
     <script src="./js/index.js"></script>
 </body>
-
 
 </html>
