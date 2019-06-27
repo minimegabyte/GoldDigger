@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
-  background-color: #472D30;
-  color: #FFE1A8;
+  background-color: #FFE1A8;
+  color: #472D30;
   text-align: center;
 }
 
@@ -22,6 +22,11 @@ h1 {
   font-size: 3.5em;
 }
 
+img {
+  width: 50%;
+  height: 50%;
+}
+
 ul {
   list-style: none;
 }
@@ -39,35 +44,29 @@ p {
 a {
   text-decoration: none;
   font-size: 1.25em;
+  color:#FFE1A8;
+  background: #472D30;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-a:hover, button:hover {
+a:hover {
   color: #472D30;
-  background:#FFE1A8;
+  border: 1px solid #472D30;
+  background: #FFE1A8;
   border-radius:5px;
   padding: 10px;
 }
 
-main > section {
-  border: #FFE1A8;
-}
-
 main section li {
   float: left;
-  margin: 10px 100px;
 }
-/* main > section > ul > li:nth-child(1) {
-  margin-right: 150px;
 
+main > section > ul > li:nth-child(odd){ 
+  margin-left: 12%;
 }
-main > section > ul > li:nth-child(2) {
-  margin-left: 30px;
-  margin-right: 100px;
+
+main > section > ul > li:nth-child(even) > img{
+  width: 40%;
+  height: 45%;
 }
-main > section > ul > li:nth-child(3) {
-  margin-right: 150px;
-}
-main > section > ul > li:nth-child(4) {
-  margin-left: 30px;
-  margin-right: 100px;
-} */
