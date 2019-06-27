@@ -15,7 +15,7 @@ playerNameEl.textContent = 'Howdy, ' + currentUserArray.name + '! ';
 scoreTrackerEl.appendChild(playerNameEl);
 var ctx = board.getContext('2d');
 var gold = new Image();
-gold.src = '../img/gold.png';
+gold.src = '../img/nugget.png';
 
 function CurrentPicturePosition(x, y) {
   this.x = x;
@@ -41,8 +41,8 @@ var timer = setTimeout(function countdown() {
   var y = coordinates.y;
   console.log(x + ' ' + y);
   ctx.drawImage(gold, x, y, 50, 50);
-  timer = setTimeout(countdown, 3000);
-}, 3000);
+  timer = setTimeout(countdown, 2000);
+}, 2000);
 
 /*
 Generate random x and y coordinates
@@ -94,8 +94,8 @@ function handleClickOnImage(event) {
       var y = coordinates.y;
       console.log(x + ' ' + y);
       ctx.drawImage(gold, x, y, 50, 50);
-      timer = setTimeout(countdown, 3000);
-    }, 3000);
+      timer = setTimeout(countdown, 2000);
+    }, 2000);
   } else {
     alert('Sorry You lose!');
     updateCurrentPlayerScore();
