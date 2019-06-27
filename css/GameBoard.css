@@ -42,30 +42,30 @@ main li {
 a {
   text-decoration: none;
   font-size: 1.25em;
+  color:#FFE1A8;
+  background: #472D30;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 a:hover {
-  color: #FFE1A8;
-  background:#472D30;;
+  color: #472D30;
+  border: 1px solid #472D30;
+  background: #FFE1A8;
   border-radius:5px;
   padding: 10px;
 }
 
-button:hover {
-  color: #FFE1A8;
-  background:#472D30;
+main > ul > a:hover {
+  transition: 200ms;
 }
 
-button {
-  font-family: 'B612 Mono', monospace;
-  color: #FFE1A8;
-  padding: 5px 10px;
-  font-size: 1.5em;
-  border-radius: 5px;
-  border: 5px solid #472D30;
+main a {
+  font-size: 2.25em;
+  font-family: 'Rubik', sans-serif;
 }
 
-button:hover {
+main a:hover {
   transition: 200ms;
 }
 
