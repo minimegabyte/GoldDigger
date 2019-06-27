@@ -20,7 +20,7 @@ function createDefaultLocalStorage() {
     var allPlayers = [];
     //Create 5 dummy players
     for (var i = 0; i < 5; i++) {
-      allPlayers.push(new Player('dummyPlayer'));
+      allPlayers.push(new Player('-----'));
     }
     localStorage.setItem('Top5', JSON.stringify(allPlayers));
   }
