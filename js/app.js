@@ -10,12 +10,14 @@ var coordinates;
 var board = document.getElementById('board');
 var scoreTrackerEl = document.getElementById('scoreTracker');
 var playerNameEl = document.getElementById('player');
+var diggingSound = document.getElementById('audio');
+var losingSound = document.getElementById('audio2');
 var currentUserArray = JSON.parse(localStorage.getItem('CurrentPlayer'));
 playerNameEl.textContent = 'Howdy, ' + currentUserArray.name + '! ';
 scoreTrackerEl.appendChild(playerNameEl);
 var ctx = board.getContext('2d');
 var gold = new Image();
-gold.src = '../img/gold.png';
+gold.src = '../img/nugget.png';
 
 function CurrentPicturePosition(x, y) {
   this.x = x;
@@ -26,7 +28,7 @@ function CurrentPicturePosition(x, y) {
 gold.onload = function() {
   var x = coordinates.x;
   var y = coordinates.y;
-  ctx.drawImage(gold,x, y, 100, 100);
+  ctx.drawImage(gold,x, y, 50, 50);
   console.log(x + ' ' + y);
 };
 
@@ -40,9 +42,9 @@ var timer = setTimeout(function countdown() {
   var x = coordinates.x;
   var y = coordinates.y;
   console.log(x + ' ' + y);
-  ctx.drawImage(gold, x, y, 100, 100);
-  timer = setTimeout(countdown, 3000);
-}, 3000);
+  ctx.drawImage(gold, x, y, 50, 50);
+  timer = setTimeout(countdown, 2000);
+}, 2000);
 
 /*
 Generate random x and y coordinates
@@ -68,7 +70,6 @@ createNewCoordinate();
 var canvasEl = document.getElementById('board');
 canvasEl.addEventListener('click', handleClickOnImage);
 
-
 function handleClickOnImage(event) {
   rect = canvasEl.getBoundingClientRect();
   scaleX = 900 / rect.width;
@@ -78,12 +79,9 @@ function handleClickOnImage(event) {
   var x = coordinates.x; //To target the right area of the picture
   var y = coordinates.y; // To target the right area of the picture
 
-  console.log('clicked x is ' + clickedX);
-  console.log('clicked y is ' + clickedY);
   if (clickedX >= x && clickedX <= x + 100 &&
       clickedY >= y && clickedY <= y + 100) {
-    console.log('Cliked on the right spot');
-    // score++;
+    diggingSound.play();
     updateScoreTracker();
     console.log('score: ' + score);
     window.clearTimeout(timer);
@@ -91,17 +89,18 @@ function handleClickOnImage(event) {
     createNewCoordinate();
     x = coordinates.x;
     y = coordinates.y;
-    ctx.drawImage(gold, x, y, 100, 100);
+    ctx.drawImage(gold, x, y, 50, 50);
     timer = setTimeout(function countdown() {
       ctx.clearRect(0, 0, 900, 500);
       createNewCoordinate();
       var x = coordinates.x;
       var y = coordinates.y;
       console.log(x + ' ' + y);
-      ctx.drawImage(gold, x, y, 100, 100);
-      timer = setTimeout(countdown, 3000);
-    }, 3000);
+      ctx.drawImage(gold, x, y, 50, 50);
+      timer = setTimeout(countdown, 2000);
+    }, 2000);
   } else {
+    losingSound.play();
     alert('Sorry You lose!');
     updateCurrentPlayerScore();
     updateTop5();
@@ -109,7 +108,7 @@ function handleClickOnImage(event) {
   }
 }
 
-function updateCurrentPlayerScore() {  
+function updateCurrentPlayerScore() {
   var currentUserArray = JSON.parse(localStorage.getItem('CurrentPlayer'));
   var finalObj = {
     name:currentUserArray.name,
@@ -117,7 +116,6 @@ function updateCurrentPlayerScore() {
   };
   localStorage.setItem('CurrentPlayer', JSON.stringify(finalObj));
 }
-
 
 function updateTop5() {
   var arrayOfTop5 = JSON.parse(localStorage.getItem('Top5'));
@@ -152,4 +150,17 @@ function updateScoreTracker() {
   scoreTrackerEl.appendChild(pEl);
 }
 
+window.addEventListener('load', function(event) {
+  var spotlight = document.getElementById('night');
+  var spotlightwidth = 128;
+  var spotlightheight = 128;
 
+  //register an event to move the spotlight
+  document.onmousemove = function(event) {
+    var offsetX = event.pageX - 280;
+    var offsetY = event.pageY - 120;
+    spotlight.style.backgroundImage = '-webkit-radial-gradient(' + offsetX + 'px ' + offsetY + 'px, ' + spotlightwidth + 'px ' + spotlightheight + 'px, transparent 5%, black)';
+  };
+  //fire the event for the first time
+  document.onmousemove({ pageX: 100, pageY: 100 });
+});
