@@ -11,6 +11,7 @@ var board = document.getElementById('board');
 var scoreTrackerEl = document.getElementById('scoreTracker');
 var playerNameEl = document.getElementById('player');
 var diggingSound = document.getElementById('audio');
+var losingSound = document.getElementById('audio2');
 var currentUserArray = JSON.parse(localStorage.getItem('CurrentPlayer'));
 playerNameEl.textContent = 'Howdy, ' + currentUserArray.name + '! ';
 scoreTrackerEl.appendChild(playerNameEl);
@@ -99,6 +100,7 @@ function handleClickOnImage(event) {
       timer = setTimeout(countdown, 2000);
     }, 2000);
   } else {
+    losingSound.play();
     alert('Sorry You lose!');
     updateCurrentPlayerScore();
     updateTop5();
