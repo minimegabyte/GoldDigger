@@ -26,7 +26,7 @@ function CurrentPicturePosition(x, y) {
 gold.onload = function() {
   var x = coordinates.x;
   var y = coordinates.y;
-  ctx.drawImage(gold,x, y, 100, 100);
+  ctx.drawImage(gold,x, y, 50, 50);
   console.log(x + ' ' + y);
 };
 
@@ -40,7 +40,7 @@ var timer = setTimeout(function countdown() {
   var x = coordinates.x;
   var y = coordinates.y;
   console.log(x + ' ' + y);
-  ctx.drawImage(gold, x, y, 100, 100);
+  ctx.drawImage(gold, x, y, 50, 50);
   timer = setTimeout(countdown, 3000);
 }, 3000);
 
@@ -86,14 +86,14 @@ function handleClickOnImage(event) {
     createNewCoordinate();
     x = coordinates.x;
     y = coordinates.y;
-    ctx.drawImage(gold, x, y, 100, 100);
+    ctx.drawImage(gold, x, y, 50, 50);
     timer = setTimeout(function countdown() {
       ctx.clearRect(0, 0, 900, 500);
       createNewCoordinate();
       var x = coordinates.x;
       var y = coordinates.y;
       console.log(x + ' ' + y);
-      ctx.drawImage(gold, x, y, 100, 100);
+      ctx.drawImage(gold, x, y, 50, 50);
       timer = setTimeout(countdown, 3000);
     }, 3000);
   } else {
